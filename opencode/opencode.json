@@ -1,0 +1,133 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "permission": {
+    "*": "ask",
+    "read": {
+      "*": "allow",
+      "*.pem": "ask",
+      "*.key": "ask",
+      "id_rsa*": "ask",
+      "*.env": "ask",
+      ".env": "ask",
+      ".env.*": "ask",
+      ".npmrc": "ask",
+      ".netrc": "ask",
+      ".pypirc": "ask",
+      "*credentials*": "ask",
+      "*secrets*": "ask",
+      "*.p12": "ask",
+      "*.pfx": "ask"
+    },
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "todowrite": "allow",
+    "question": "allow",
+    "skill": "allow",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "codesearch": "ask",
+    "context7_*": "ask",
+    "external_directory": "ask",
+    "glean_eng-mcp_gmail_*": "allow",
+    "glean_eng-mcp_meeting_*": "allow",
+    "glean_eng-mcp_memory": "allow",
+    "glean_eng-mcp_code_search": "allow",
+    "glean_eng-mcp_user_activity": "allow",
+    "glean_eng-mcp_employee_search": "allow",
+    "groundcover_*": "allow",
+    "edit": {
+      "*": "allow",
+      "*.pem": "ask",
+      "*.key": "ask",
+      "id_rsa*": "ask",
+      "*.env": "ask",
+      ".env": "ask",
+      ".env.*": "ask",
+      ".npmrc": "ask",
+      ".netrc": "ask",
+      ".pypirc": "ask",
+      "*credentials*": "ask",
+      "*secrets*": "ask",
+      "*.p12": "ask",
+      "*.pfx": "ask"
+    },
+    "bash": {
+      "*": "allow",
+      "rm *": "ask",
+      "rmdir *": "ask",
+      "mv *": "ask",
+      "cp *": "ask",
+      "chmod *": "ask",
+      "chown *": "ask",
+      "dd *": "ask",
+      "truncate *": "ask",
+      "rsync *--delete*": "ask",
+      "git push *": "ask",
+      "git commit *": "ask",
+      "git rebase *": "ask",
+      "git merge *": "ask",
+      "git cherry-pick *": "ask",
+      "git reset *": "ask",
+      "git clean *": "ask",
+      "git checkout *": "ask",
+      "git switch *": "ask",
+      "sed -i *": "ask",
+      "perl -pi *": "ask",
+      "find * -delete": "ask",
+      "xargs rm *": "ask",
+      "kubectl *": "ask",
+      "terraform *": "ask",
+      "tofu *": "ask",
+      "docker *": "ask",
+      "docker-compose *": "ask",
+      "gh release *": "ask",
+      "npm publish *": "ask",
+      "pnpm publish *": "ask",
+      "yarn publish *": "ask"
+    }
+  },
+  "tools": {
+    "websearch": true,
+    "codesearch": true
+  },
+  "mcp": {
+    "glean_eng-mcp": {
+      "type": "remote",
+      "url": "https://goodrx-be.glean.com/mcp/eng-mcp",
+      "enabled": true
+    },
+    "figma-desktop": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3845/mcp",
+      "enabled": true
+    },
+    "groundcover": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote@0.1.30",
+        "https://mcp.groundcover.com/api/mcp",
+        "54278",
+        "--header",
+        "X-Timezone:${TIMEZONE}",
+        "--header",
+        "X-Tenant-UUID:${TENANT_UUID}",
+        "--header",
+        "X-Backend-Id:groundcover"
+      ],
+      "environment": {
+        "TIMEZONE": "America/Phoenix",
+        "TENANT_UUID": "REDACTED"
+      },
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    }
+  }
+}
